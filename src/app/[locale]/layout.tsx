@@ -4,6 +4,9 @@ import {hasLocale} from 'next-intl';
 import {NextIntlClientProvider} from 'next-intl';
 import {getMessages, setRequestLocale, getTranslations} from 'next-intl/server';
 import {routing} from '@/i18n/routing';
+import {buildMetadata} from '@/lib/seo/metadata';
+import {organizationSchema, websiteSchema} from '@/lib/seo/schema';
+import {JsonLd} from '@/components/seo/JsonLd';
 import '../globals.css';
 
 // توليد صفحات ثابتة لكل لغة مدعومة
@@ -11,6 +14,7 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));
 }
 
+// الـ metadata الافتراضية للموقع (canonical + hreflang + OG + Twitter)
 export async function generateMetadata({
   params
 }: {
@@ -18,10 +22,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const {locale} = await params;
   const t = await getTranslations({locale, namespace: 'Common'});
-  return {
-    title: `${t('appName')} — ${t('tagline')}`,
-    description: t('tagline')
-  };
+  return buildMetadata({
+    locale,
+    path: '',
+    title: t('tagline')
+  });
 }
 
 export default async function LocaleLayout({
@@ -51,6 +56,8 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
+        {/* بيانات Schema.org على مستوى الموقع كله */}
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
       </body>
     </html>
   );

@@ -1,3 +1,4 @@
+import type {Metadata} from 'next';
 import {notFound} from 'next/navigation';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {Link} from '@/i18n/navigation';
@@ -5,6 +6,26 @@ import {isValidCategory} from '@/lib/categories';
 import {getListings, getCountries} from '@/lib/listings';
 import {ListingCard} from '@/components/ListingCard';
 import {BrowseFilters} from '@/components/BrowseFilters';
+import {buildMetadata} from '@/lib/seo/metadata';
+
+// metadata خاصة بصفحة التصفّح: canonical/hreflang صحيحان لكل فئة
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{locale: string; category: string}>;
+}): Promise<Metadata> {
+  const {locale, category} = await params;
+  if (!isValidCategory(category)) {
+    return buildMetadata({locale, noIndex: true});
+  }
+  const t = await getTranslations({locale, namespace: 'Browse'});
+  const tc = await getTranslations({locale, namespace: 'Categories'});
+  return buildMetadata({
+    locale,
+    path: `/browse/${category}`,
+    title: t('title', {category: tc(category)})
+  });
+}
 
 // تحليل رقم من معامل البحث (أو undefined إن لم يكن صالحاً)
 function parseNumber(value: string | undefined): number | undefined {

@@ -1,5 +1,6 @@
 import 'server-only';
 import {createClient} from './supabase/server';
+import {createStaticClient} from './supabase/static';
 import type {Category, ListingRow} from './supabase/types';
 
 // التحقق من توفّر إعدادات Supabase (قد لا تكون مضبوطة بعد قبل ربط المشروع)
@@ -80,6 +81,28 @@ export async function getListingBySlug(slug: string): Promise<ListingRow | null>
   } catch (err) {
     console.error('getListingBySlug exception:', err);
     return null;
+  }
+}
+
+// قراءة الإعلانات النشطة بلا كوكيز — مخصّصة لـ sitemap (تسمح بـ ISR)
+export type SitemapListing = Pick<ListingRow, 'slug' | 'updated_at' | 'images'>;
+
+export async function getListingsForSitemap(): Promise<SitemapListing[]> {
+  if (!hasSupabaseEnv()) return [];
+
+  try {
+    const supabase = createStaticClient();
+    const {data, error} = await supabase
+      .from('listings')
+      .select('slug, updated_at, images')
+      .eq('status', 'active')
+      .order('created_at', {ascending: false})
+      .returns<SitemapListing[]>();
+
+    if (error || !data) return [];
+    return data;
+  } catch {
+    return [];
   }
 }
 

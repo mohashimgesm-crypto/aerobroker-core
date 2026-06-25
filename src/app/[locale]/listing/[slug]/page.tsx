@@ -1,3 +1,4 @@
+import type {Metadata} from 'next';
 import {notFound} from 'next/navigation';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {Link} from '@/i18n/navigation';
@@ -5,6 +6,36 @@ import {getListingBySlug} from '@/lib/listings';
 import {formatPrice, formatNumber} from '@/lib/format';
 import {Gallery} from '@/components/Gallery';
 import {ListingActions} from '@/components/ListingActions';
+import {buildMetadata} from '@/lib/seo/metadata';
+import {listingSchema, breadcrumbSchema} from '@/lib/seo/schema';
+import {JsonLd} from '@/components/seo/JsonLd';
+import {SEO_CONFIG} from '@/lib/seo/config';
+
+// metadata خاصة بالإعلان: عنوان + وصف + canonical/hreflang + صور OG
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{locale: string; slug: string}>;
+}): Promise<Metadata> {
+  const {locale, slug} = await params;
+  const listing = await getListingBySlug(slug);
+
+  if (!listing) {
+    return buildMetadata({locale, path: `/listing/${slug}`, noIndex: true});
+  }
+
+  const title = `${listing.make} ${listing.model}`;
+  const description =
+    (locale === 'ar' ? listing.description_ar : listing.description_en) ?? undefined;
+
+  return buildMetadata({
+    locale,
+    path: `/listing/${listing.slug}`,
+    title,
+    description,
+    images: listing.images
+  });
+}
 
 export default async function ListingDetailPage({
   params
@@ -22,9 +53,18 @@ export default async function ListingDetailPage({
   const t = await getTranslations('Listing');
   const tc = await getTranslations('Categories');
   const tcond = await getTranslations('Conditions');
+  const tCommon = await getTranslations('Common');
 
   const title = `${listing.make} ${listing.model}`;
   const descriptionField = locale === 'ar' ? listing.description_ar : listing.description_en;
+
+  // بيانات Schema.org للإعلان + مسار التنقّل
+  const {baseUrl} = SEO_CONFIG;
+  const breadcrumb = breadcrumbSchema([
+    {name: tCommon('home'), url: `${baseUrl}/${locale}`},
+    {name: tc(listing.category), url: `${baseUrl}/${locale}/browse/${listing.category}`},
+    {name: title, url: `${baseUrl}/${locale}/listing/${listing.slug}`}
+  ]);
 
   // بناء صفوف المواصفات (نعرض فقط القيم المتوفّرة)
   const specs: {label: string; value: string}[] = [];
@@ -63,6 +103,9 @@ export default async function ListingDetailPage({
 
   return (
     <main className="mx-auto max-w-6xl px-6 py-10">
+      {/* بيانات Schema.org: المنتج (الطائرة) + مسار التنقّل */}
+      <JsonLd data={[listingSchema(listing, locale), breadcrumb]} />
+
       <Link
         href={`/browse/${listing.category}`}
         className="text-sm text-slate-400 hover:text-sky"
