@@ -1,0 +1,103 @@
+{
+  "Common": {
+    "appName": "AeroBroker",
+    "tagline": "سوق وساطة الطائرات الخفيفة",
+    "home": "الرئيسية"
+  },
+  "Nav": {
+    "browse": "تصفّح الإعلانات",
+    "language": "English"
+  },
+  "Home": {
+    "title": "منصّة وساطة موثوقة لشراء وبيع الطائرات الخفيفة",
+    "subtitle": "تصفّح طائرات فوق خفيفة، مروحيات، ومعدّات طيران من بائعين موثوقين — مع حماية بياناتك وتواصل آمن عبر الوسيط.",
+    "browseCta": "ابدأ التصفّح"
+  },
+  "Categories": {
+    "ultralight": "طائرات فوق خفيفة",
+    "helicopter": "مروحيات",
+    "machinery": "معدّات طيران"
+  },
+  "Conditions": {
+    "Excellent": "ممتازة",
+    "Good": "جيدة",
+    "Fair": "مقبولة"
+  },
+  "Browse": {
+    "title": "تصفّح: {category}",
+    "searchPlaceholder": "ابحث بالماركة أو الموديل…",
+    "filtersTitle": "الفلاتر",
+    "categoryLabel": "الفئة",
+    "countryLabel": "الدولة",
+    "allCountries": "كل الدول",
+    "minPrice": "أقل سعر (دولار)",
+    "maxPrice": "أعلى سعر (دولار)",
+    "apply": "تطبيق",
+    "reset": "إعادة تعيين",
+    "resultsCount": "{count} نتيجة",
+    "noResults": "لا توجد إعلانات مطابقة لبحثك.",
+    "hours": "{hours} ساعة طيران",
+    "priceOnRequest": "السعر عند الطلب",
+    "negotiable": "قابل للتفاوض"
+  },
+  "Listing": {
+    "backToBrowse": "العودة للتصفّح",
+    "specsTitle": "المواصفات الكاملة",
+    "descriptionTitle": "الوصف",
+    "year": "سنة الصنع",
+    "flyingHours": "ساعات الطيران",
+    "engineModel": "المحرّك",
+    "maxSpeed": "السرعة القصوى",
+    "range": "المدى",
+    "mtow": "أقصى وزن إقلاع",
+    "seats": "المقاعد",
+    "condition": "الحالة",
+    "country": "الدولة",
+    "city": "المدينة",
+    "category": "الفئة",
+    "shippingWeight": "وزن الشحن",
+    "requestQuote": "طلب عرض سعر",
+    "costCalculator": "حاسبة التكاليف",
+    "priceOnRequest": "السعر عند الطلب",
+    "negotiable": "قابل للتفاوض",
+    "protectionNote": "بيانات البائع محمية — يتم التواصل حصراً عبر الوسيط لضمان أمان الطرفين.",
+    "unitKmh": "كم/س",
+    "unitKm": "كم",
+    "unitKg": "كجم"
+  },
+  "Calculator": {
+    "title": "حاسبة تكاليف الاستيراد",
+    "intro": "قدّر التكلفة الإجمالية لاستيراد هذه الطائرة حسب دولة الوجهة.",
+    "selectCountry": "دولة الوجهة",
+    "aircraftPrice": "سعر الطائرة",
+    "freight": "الشحن الجوي",
+    "insurance": "التأمين",
+    "cif": "القيمة CIF",
+    "customs": "الجمارك",
+    "vat": "ضريبة القيمة المضافة",
+    "portHandling": "مناولة الميناء",
+    "total": "الإجمالي التقديري",
+    "close": "إغلاق",
+    "note": "هذه تقديرات إرشادية فقط وقد تختلف القيم الفعلية حسب الجهات الرسمية.",
+    "noPrice": "سعر هذه الطائرة غير معلن، تواصل عبر طلب عرض سعر لمعرفة التكلفة."
+  },
+  "Rfq": {
+    "title": "طلب عرض سعر",
+    "subtitle": "املأ بياناتك وسيتواصل معك الوسيط قريباً.",
+    "name": "الاسم الكامل",
+    "email": "البريد الإلكتروني",
+    "phone": "رقم الهاتف",
+    "country": "الدولة",
+    "message": "رسالتك",
+    "messagePlaceholder": "أخبرنا باهتمامك أو أي أسئلة لديك…",
+    "submit": "إرسال الطلب",
+    "submitting": "جارٍ الإرسال…",
+    "successTitle": "تم استلام طلبك ✅",
+    "successMessage": "شكراً لك! سيتواصل معك فريق الوساطة في أقرب وقت.",
+    "errorTitle": "تعذّر إرسال الطلب",
+    "errorMessage": "حدث خطأ ما، يُرجى المحاولة مرة أخرى.",
+    "close": "إغلاق",
+    "required": "هذا الحقل مطلوب",
+    "invalidEmail": "بريد إلكتروني غير صالح"
+  }
+}

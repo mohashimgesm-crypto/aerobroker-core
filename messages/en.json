@@ -1,0 +1,103 @@
+{
+  "Common": {
+    "appName": "AeroBroker",
+    "tagline": "Light aircraft brokerage marketplace",
+    "home": "Home"
+  },
+  "Nav": {
+    "browse": "Browse listings",
+    "language": "العربية"
+  },
+  "Home": {
+    "title": "A trusted brokerage platform for buying and selling light aircraft",
+    "subtitle": "Browse ultralights, helicopters, and aviation machinery from verified sellers — with your data protected and secure communication through the broker.",
+    "browseCta": "Start browsing"
+  },
+  "Categories": {
+    "ultralight": "Ultralights",
+    "helicopter": "Helicopters",
+    "machinery": "Aviation machinery"
+  },
+  "Conditions": {
+    "Excellent": "Excellent",
+    "Good": "Good",
+    "Fair": "Fair"
+  },
+  "Browse": {
+    "title": "Browse: {category}",
+    "searchPlaceholder": "Search by make or model…",
+    "filtersTitle": "Filters",
+    "categoryLabel": "Category",
+    "countryLabel": "Country",
+    "allCountries": "All countries",
+    "minPrice": "Min price (USD)",
+    "maxPrice": "Max price (USD)",
+    "apply": "Apply",
+    "reset": "Reset",
+    "resultsCount": "{count} results",
+    "noResults": "No listings match your search.",
+    "hours": "{hours} flight hours",
+    "priceOnRequest": "Price on request",
+    "negotiable": "Negotiable"
+  },
+  "Listing": {
+    "backToBrowse": "Back to browse",
+    "specsTitle": "Full specifications",
+    "descriptionTitle": "Description",
+    "year": "Year",
+    "flyingHours": "Flight hours",
+    "engineModel": "Engine",
+    "maxSpeed": "Max speed",
+    "range": "Range",
+    "mtow": "Max takeoff weight",
+    "seats": "Seats",
+    "condition": "Condition",
+    "country": "Country",
+    "city": "City",
+    "category": "Category",
+    "shippingWeight": "Shipping weight",
+    "requestQuote": "Request a quote",
+    "costCalculator": "Cost calculator",
+    "priceOnRequest": "Price on request",
+    "negotiable": "Negotiable",
+    "protectionNote": "Seller details are protected — all communication goes through the broker to keep both parties safe.",
+    "unitKmh": "km/h",
+    "unitKm": "km",
+    "unitKg": "kg"
+  },
+  "Calculator": {
+    "title": "Import cost calculator",
+    "intro": "Estimate the total cost of importing this aircraft based on the destination country.",
+    "selectCountry": "Destination country",
+    "aircraftPrice": "Aircraft price",
+    "freight": "Air freight",
+    "insurance": "Insurance",
+    "cif": "CIF value",
+    "customs": "Customs duty",
+    "vat": "VAT",
+    "portHandling": "Port handling",
+    "total": "Estimated total",
+    "close": "Close",
+    "note": "These are indicative estimates only; actual values may vary per official authorities.",
+    "noPrice": "This aircraft's price is not public — request a quote to learn the cost."
+  },
+  "Rfq": {
+    "title": "Request a quote",
+    "subtitle": "Fill in your details and the broker will contact you shortly.",
+    "name": "Full name",
+    "email": "Email",
+    "phone": "Phone number",
+    "country": "Country",
+    "message": "Your message",
+    "messagePlaceholder": "Tell us about your interest or any questions…",
+    "submit": "Send request",
+    "submitting": "Sending…",
+    "successTitle": "Request received ✅",
+    "successMessage": "Thank you! Our brokerage team will reach out to you soon.",
+    "errorTitle": "Couldn't send request",
+    "errorMessage": "Something went wrong, please try again.",
+    "close": "Close",
+    "required": "This field is required",
+    "invalidEmail": "Invalid email address"
+  }
+}
