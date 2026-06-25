@@ -10,10 +10,14 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.resolve('.')
   },
-  // السماح بصور الإعلانات من مصادر خارجية (سيتم تحديث القائمة لاحقاً عند ربط التخزين)
+  // السماح بصور الإعلانات من Wikimedia Commons فقط (محصور بمسار الملفات للأمان)
   images: {
     remotePatterns: [
-      {protocol: 'https', hostname: '**'}
+      {
+        protocol: 'https',
+        hostname: 'upload.wikimedia.org',
+        pathname: '/wikipedia/commons/**'
+      }
     ]
   }
 };
